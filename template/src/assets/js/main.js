@@ -6,6 +6,9 @@ import './RGraph.svg.horseshoe'; */
 
 new WOW().init();
 
+//Parfois le dessin ne fonctionne pas du premier coup, actualiser la page !!
+
+
 //--------------------------------------------DESSIN-----------------------------------------
 
 //Méthode pour vérifier si l'utilisateur trace dans les lettre : Le canvas a une opacité de 0, donc si l'utilisateur se trouve sur un pixel opaque, il a perdu
@@ -28,6 +31,21 @@ const lost = document.querySelector('.lost');
 const win = document.querySelector('.win');
 const btnClose = document.querySelectorAll('.btn-close');
 
+var horseshoe = new RGraph.SVG.Horseshoe({
+    id: 'chart-container2',
+    min: 0,
+    max: 100,
+    value: 0,
+    options: {
+        labelsCenterDecimals: 0,
+        labelsCenterUnitsPost: '%'
+    },
+    responsive: [
+        {maxWidth:768,width:280,height:280,options: {textSize: 20}, marginLeft: 0}
+    ]
+});
+
+horseshoe.grow();
 
 //Définir le contexte
 const context = canvas.getContext('2d', {willReadFrequently: true});
@@ -40,7 +58,6 @@ let oldYAxis = null;
 let pixels = null;
 //Définir la variable letterPixel, qui contient le nombre de pixel dans la lettre
 let letterPixels = null;
-//
 let completePourcent = 0;
 let leftCanvas = 0;
 let topCanvas = 0;
@@ -59,7 +76,6 @@ btnClose.forEach(btn => {
         lost.classList.add('hidden');
     })
 })
-
 
 window.addEventListener('load', () => {
     setupCanvas();
@@ -95,7 +111,10 @@ function showError(){
 
 function pixelCompare() {
     completePourcent = Math.round((getPixelAmount(255,0,0) / letterPixels) *100);
-    console.log(completePourcent)
+    horseshoe.value = (completePourcent / 40) * 100;
+
+    horseshoe.grow();
+
     if (completePourcent > 40) {
         modale.classList.remove('hidden');
         win.classList.remove('hidden');
@@ -178,6 +197,8 @@ function clearCanvas() {
     oldXAxis = null;
     oldYAxis = null;
     context.clearRect(0, 0, canvas.width, canvas.height);
+    horseshoe.value = 0;
+    horseshoe.grow();
 }
 
 //Ecoute des évènements souris avec clic enfoncé, souris sans clic enfoncé, souris qui bouge et appelle les fonctions correspondantes
@@ -190,44 +211,3 @@ btnClear.addEventListener('click', () => {
     clearCanvas();
     setupCanvas();
 });
-
-
-//-----------------------------------RGRAPH---------------------------------------
-
-
-const horseShoeGraph = () => {
-
-    window.onload = function() {
-        // Valeurs fixes à afficher séquentiellement
-        var valeurs = [0, 25, 50, 75, 100];
-        var index = 0;
-
-        // Création du graphique horseshoe
-        var horseshoe = new RGraph.SVG.Horseshoe({
-            id: 'chart-container2',
-            min: 0,
-            max: 100,
-            value: valeurs[index],
-            options: {
-                labelsCenterDecimals: 0,
-                labelsCenterUnitsPost: '%'
-            },
-            responsive: [
-                {maxWidth:768,width:300,height:300,options: {textSize: 20}, marginLeft: 0}
-            ]
-        }).grow();
-
-        // Mise à jour des valeurs séquentielles
-        var d = 2500; // Intervalle de mise à jour (2,5 secondes)
-        setTimeout(function update() {
-            index = (index + 1) % valeurs.length;
-            horseshoe.value = valeurs[index];
-            horseshoe.grow();
-            
-            setTimeout(update, d);
-        }, d);
-    }
-
-}
-
-horseShoeGraph();

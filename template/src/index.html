@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://www.rgraph.net/libraries/RGraph.svg.horseshoe.js"></script>
+    <script src="https://www.rgraph.net/libraries/RGraph.svg.common.core.js"></script>
     <script type="module" src="./assets/js/main.js" defer></script>
     <title>Montgolfières</title>
   </head>
@@ -127,9 +129,11 @@
       <section id="dessin">
         <div>
           <h2 class="wow animate__animated animate__bounceInLeft">Dessine la montgolfière, sans dépasser!</h2>
+          <p>Si tu ne peux pas dessiner, actualise la page !</p>
           <canvas class="dessin-canvas" width="300" height="200"></canvas>
           <button class="btn-clear">Clear</button>
         </div>
+        <h3>Pourcentage de complétion</h3>
         <div class="graph">
           <div id="chart-container2"></div>
         </div>
@@ -144,10 +148,6 @@
             <p>Bravo, tu as gagné!</p>
         </div>
     </div>
-
-<!--     <script type="module" src="./assets/js/RGraph.common.core.js"></script>
-    <script type="module" src="./assets/js/RGraph.svg.common.core.js"></script>
-    <script type="module" src="./assets/js/RGraph.svg.horseshoe.js"></script> -->
 
     </main>
 
