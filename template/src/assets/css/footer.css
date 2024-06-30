@@ -1,0 +1,14 @@
+footer {
+    background-color: aliceblue;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.121);
+    padding: 1rem 2rem;
+}
+
+.footer1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer2 {
+    text-align: center;
+}

@@ -1,0 +1,72 @@
+@import url(./header.css);
+@import url(./sections.css);
+@import url(./aside.css);
+@import url(./footer.css);
+
+@font-face {
+  font-family: 'playwrite';
+  src: url('../fonts/playwritemx-variablefont_wght-webfont.woff2') format('woff2'),
+      url('../fonts/playwritemx-variablefont_wght-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('../fonts/montserrat-variablefont_wght-webfont.woff2') format('woff2'),
+      url('../fonts/montserrat-variablefont_wght-webfont.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('../fonts/montserrat-italic-variablefont_wght-webfont.woff2') format('woff2'),
+      url('../fonts/montserrat-italic-variablefont_wght-webfont.woff') format('woff');
+  font-style: italic;
+}
+
+
+body {
+  background-color: rgb(234,254,255);
+  background: linear-gradient(0deg, rgba(234,254,255,1) 0%, rgba(135,170,171,1) 100%);
+  margin: 0;
+  font-family: "montserrat", sans-serif;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  overflow-x: hidden;
+}
+
+h2 {
+  font-family: 'playwrite';
+  text-align: center;
+  font-weight: 900;
+}
+
+h3 {
+  font-weight: 900;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.203);
+  margin: 0;
+  animation: pulse; 
+  animation-duration: 2s; 
+}
+
+main {
+  z-index: 1;
+  padding: 2rem;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 1fr 1fr;
+  }
+  
+}
