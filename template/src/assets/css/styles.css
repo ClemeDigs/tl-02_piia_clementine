@@ -23,6 +23,13 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'montgolfiere';
+  src: url('../fonts/hot_air_balloons-webfont.woff2') format('woff2'),
+      url('../fonts/hot_air_balloons-webfont.woff') format('woff');
+  font-style: italic;
+}
+
 
 body {
   background-color: rgb(234,254,255);
